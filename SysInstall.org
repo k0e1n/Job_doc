@@ -203,7 +203,7 @@ brew install wget
 
 pip3 install pymc3 
 pip3 install --user hg+http://bitbucket.org/pygame/pygame 
-
+pip install -r requirements.txt
 
  # cd `brew --cache`   
 brew install cmake
@@ -247,4 +247,53 @@ cp  -f  /Users/k0e1n/Desktop/hosts  /etc/
 export PATH=${PATH}:/Applications/Julia-1.0.app/Contents/Resources/julia/bin
 
 
+
+* Latex相关
+
+brew cask install mactex
+
+dotspacemacs-configuration-layers :
+(latex :variables
+       latex-build-command "LaTeX")
+
+重启配置：SPC f e R
+
+键入 SPC m b 编译成 PDF
+键入 SPC m v 就能打开编译生成的 PDF
+
+支持中文： 即：[UTF8] ：首先，打开TexShop，按住Command键，同时点开左上角TexShop中的“偏好设置”，找到“编码”，将其设置为“Unicode(UTF-8)”
+\documentclass[UTF8]{ctexart}
+
+
+see “*Org PDF Output
+(setq org-latex-pdf-process '("xelatex -interaction nonstopmode %f" 
+                                                    "xelatex -interaction nonstopmode %f"))
+
+
+;; set latex to xelatex
+(setq org-latex-pdf-process '("xelatex -shell-escape -interaction nonstopmode %f"
+                              "xelatex -shell-escape -interaction nonstopmode %f"))
+
+#+LATEX_HEADER: \usepackage{fontspec}
+#+LATEX_HEADER: \setmainfont{Songti SC}
+
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2018/bin/x86_64-darwin/"))
+(setq exec-path (append exec-path '("/usr/local/texlive/2018/bin/x86_64-darwin/"))
+
+
+Brook翻牆大法，比VPN/SS/SSR更低調的手機翻牆方法
+
+Buddhism has seven hardships in life: birth, old age, sickness, death, hatred, hatred, love and parting.
+no org-babel-execute function for
+
+;;/home/dominik/images/jupiter.jpg            same as above
+;file:/home/dominik/images/jupiter.jpg       file, absolute path
+
+
+#+BEGIN_COMMENT
+  块注释
+  ...
+ #+END_COMMENT
+
+* Spacemacs 设置相关
 
