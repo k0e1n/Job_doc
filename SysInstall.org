@@ -241,10 +241,12 @@ a、
 sudo echo 0.0.0.0 account.jetbrains.com >> /Users/k0e1n/Desktop/hosts
 cp  -f  /Users/k0e1n/Desktop/hosts  /etc/
 
+
 * Julia
 编辑环境变量配置文件vi .bash_profile
 
 export PATH=${PATH}:/Applications/Julia-1.0.app/Contents/Resources/julia/bin
+
 
 
 
@@ -295,5 +297,7 @@ no org-babel-execute function for
   ...
  #+END_COMMENT
 
+
 * Spacemacs 设置相关
+
 
