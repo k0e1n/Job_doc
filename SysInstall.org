@@ -301,3 +301,265 @@ no org-babel-execute function for
 * Spacemacs 设置相关
 
 
+** 一、安装spacemacs was ###### rm -rf ~/.emacs.d
+
+brew cask reinstall emacs
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+
+
+SPC f e d 打开 ~/.spacemacs
+SPC f e R来重载配置
+
+SPC b b 缓存管理列表
+SPC p t 文件管理器
+ SPC p f 查找文件
+SPC / 查找文本
+
+ spc-m-s-py3-daily enter 选择 py3-daily 虚拟环境
+spc-spc-pytest-all enter 即可运行所有 pytest 测试。
+
+快捷键(启动键是SPC，即空格)	描述	推荐星级
+,	（注意：不需要SPC启动）当前模式下的lead-key快捷键，可以显示当前模式的常用命令，很不错！	*****
+SPC x	查找并跳转到“单词x或者X开头的单词位置”，x是char字符，可以是任意字符	****
+!	执行shell命令	
+‘	打开一个shell终端	****
+*或者/	在project里搜索关键词	*****
+1 2 3 … 9	跳转到第n个window窗口	
+:	即emacs自带的M-x	
+;	用来注释代码的，这个可以查看一下帮助手册。各种注释操作	
+?	显示所有快捷键。可以grep关键词查找快捷键。	
+`	mark相关。即标记位置，用于代码跳转的。就是标签。	
+a r	ranger命令。打开当前文件所在目录，并能实时显示目录或文件内容	*****
+a u	undo作用。可以上下操作，是undo的history列表。	
+b b	查找并切换到buffer/recent-file	
+b d	删除当前buffer	
+f f	查找文件以及recent-files	
+f y	复制并显示当前buffer文件名。完整路径	*****
+l s	layout的保存，输入layout的名称	*****
+l L	大写L。layout的load加载	*****
+n n	narrow命令。就是把某段代码单独显示。操作完之后，SPC n w就可以回到之前的界面	
+n w	narrow-widen命令。	
+p p	打开某个project。	*****
+q q	退出spacemacs	
+r r	显示register里的值。一般是复制、删除、选中后的内容。这个需要查看emacs帮助手册理解。	
+s a p	在project的所有文件里，使用ag（因为ag>ack>grep的搜索速度，所以只推荐ag。ag需要单独安装，很简单，百度即可）命令搜索关键词。	*****
+s s	在当前buffer里搜索关键词。	*****
+s S	在当前buffer里搜索关键词。SPC s S比*，结果要好看	*****
+T h	选择主题。一般都选择spacemacs默认主题，另外就是monokai。	
+u	这个命令，类似linux里的xargs，是一个神奇的命令。我还不熟悉。应该深入了解。	
+v	外扩命令。就是代码不断增加选中的范围。很神奇的。会有提示下一个按键。v是继续外扩；V是缩小外扩。	
+w -	window横切	
+w /	window竖切	
+w c	window close	
+w m	window 最大化	
+x a	代码对齐的。会有提示下一
+--------------------- 
+
+
+二、vim  ~/.spacemacs
+1、设置行号dotspacemacs-line-numbers  t;; 'relative ; t绝对行号
+
+3、设置源 dotspacemacs/init ()
+
+(setq configuration-layer--elpa-archives
+    '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+      ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+      ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
+
+     ;;解决org表格里面中英文对齐的问题
+     (when (configuration-layer/layer-usedp 'chinese) 
+     (when (spacemacs/system-is-mac) 
+     (spacemacs//set-monospaced-font "Source Code Pro" "Hiragino Sans GB" 14 16)))
+
+    (with-eval-after-load 'org
+     (org-babel-do-load-languages
+     'org-babel-load-languages
+      '(
+        (emacs-lisp . t)
+        (ruby . t)
+        (ditaa . t)
+        (python . t)
+        (latex . t)
+        (plantuml . t)
+        (R . t)
+       )))
+
+         (display-time-mode 1)
+自动换行
+(toggle-truncate-lines 1) 
+
+solarized-light
+2、设置 (defun dotspacemacs/user-config () 
+ (setq python-shell-interpreter "/usr/local/Cellar/python/3.7.0/bin/python3")
+
+
+4、python自动补全:
+a、dotspacemacs-additional-package(epc  deferred  auto-complete  jedi htmlize):
+b. M-X:  jedi:install-serverx
+c. vim ~/.emacs.d/init.el 
+(autoload 'jedi:setup "jedi" nil t)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:setup-keys t)                      ; optional
+(setq jedi:complete-on-dot t)                 ; optional
+
+设置字体
+(set-default-font " -*-Helvetica-normal-normal-normal-*-14-*-*-*-p-0-iso10646-1")
+
+
+WebKit 浏览器， 你能在Emacs中编写代码， 边通过浏览器查阅各种资料
+EMMS 强大的音乐播放管理器， 从音乐播放、播放列表、音乐电台到专辑浏览、Tag编辑功能一应俱全
+Dired 文件管理器， 键盘风格的文件管理功能， 通过Dired内置的标记、搜索、文本编辑模式等强大功能， 你能通过几秒钟魔术般的表演做到别人需要几天才能做完的事情
+Org 任务时间管理工具， 这个星球最强大的任务时间管理工具， 你可以基于文本式的对项目进行管理和时间追踪， 虽然是纯文本， 但是能轻松嵌入多媒体、外部连接、电子表格等强大工具， 而这些只包含在一个充满奇幻想象力的 Org 格式中
+聊天通讯软件， 强大到变态的IRC聊天功能， 自动回复、自动翻译、甚至是语音读出朋友的消息；通过简单的扩展还能轻松支持XMPP协议和其他软件聊天（比如 gtalk)
+新闻阅读器， RSS、Atom格式新闻尽收眼底， again， 你不用为了看新闻来回切窗口
+终端模拟器， 你再也不用在编写代码的时候切到外部终端中看输出结果， 你甚至可以在终端模拟器中嵌入 vi, 或者在终端中再嵌入 Emacs， 然后在Emacs再打开终端再嵌入Emacs， 哈哈 … 玩够了没？
+Gnus, 统一的阅读邮件和邮件列表的神器， Gnus基于线索式的邮件管理让你随时随地保持清新的上下文来回复好友邮件
+Wiki编辑器， 通过 Yaoddmuse 几乎能支持所有的Wiki格式， 实时语法高亮， 你不用担心保存以后确发现格式错了
+数学计算器， 从基本的计算器到高级的数学公式演算， 甚至实时输出3D演算结果
+翻译软件， 所有Emacs可以访问到的单词和语句， 都可以快速翻译成你的母语
+语音朗读， 通过 festival 或者其他发音引擎， 你可以自由的朗读emacs可以看到的任何数据， 我有时候经常边写程序边听IRC聊天
+还有很多小功能， 比如查看日历、玩俄罗斯方块、好友信息管理等 …. 太多太多了， 上面只是列出Emacs比较强大的通用功能。
+
+项目当中时，可以用SPC p t触发
+Emacs中的光标移动
+C-x C-f 打开文件，输入文件名字后，Emacs就会把文件内容写入Buffer显示出来，直到你保存后，写入文件
+C-x C-s 保存文件，会把这段时间内的修改直接写入到文件内容中
+C-x C-b 打开所有的buffer文件，列出所有你打开过的文件缓存，如果没有保存，相应的文件名称前带有一个*字
+C-x b 切换buffer文件，输入buffer名字后，会将当前窗口切换成相应buffer文件内容
+C-x u 取消上一个操作，undo
+C-u 8 C-x u 连续8次做undo操作，
+C-u Num 连续操作几次，后面再键入相应命令
+C-x C-c     退出Emacs
+C-z 挂载Emacs，返回shell界面， shell键面输入 %emacs 返回emacs键面
+M-x  goto-line 调到第几行，输入行数
+M-< 移到buffer第一个字符
+M->  移到buffer最后一个字符
+C-s 搜索关键字 C-s 下一个搜到的地方
+C-r 逆向搜索关键字  C-r 上一个搜到的地方
+M-x  fundamental-mode/ text-mode/ winner-mode 切换各种编辑模式
+M-m c l 注释
+M-g M-g：Emacs会要求输入行号，移动光标到指定行
+
+创建新文件：
+
+在提示符处输入一个不存在的文件名
+回车确认后，Emacs即创建了一个空的Buffer供输入使用。
+保存文件
+Emac的保存文件非常简单，只需要按下组合键Ctrl-x Ctrl-s即可。
+另存文件
+要另存一个文件，按下组合键Ctrl-x Ctrl-w，按提示输入新的文件名即可。
+
+M-x  list-packages
+Emacs中的删除
+Emacs的剪贴板以及Undo/Redo
+Emacs中的查找和替换
+按Meta-% 即可启动查找且替换模式
+
+
+
+
+Vim中如何全选并复制？ 
+（区分大小写！！！） 
+全部删除：按esc键后，先按gg（到达顶部），然后dG 
+全部复制：按esc键后，先按gg，然后ggyG 
+全选高亮显示：按esc键后，先按gg，然后ggvG或者ggVG
+单行复制：按esc键后, 然后yy 
+单行删除：按esc键后, 然后dd 
+粘贴：按esc键后, 然后p
+vim只能粘贴50行的问题： 
+在当前用户主目录（~）编辑~/.vimrc（如果不存在，新建这个文件），添加一行
+
+命令行模式下输入（n为指定的行号）：
+（1）ngg / nG
+（2）:n
+（3）vim +n filename（注意这里要输入 + 号）
+三者的区别在于，ngg/nG输入以后不需要按下回车键，而输入:n之后还要按下回车键才会跳转，vim +n filename只能在打开文件时跳转到相应的行。
+
+比如想跳转到文本的第12行，可以执行如下命令：
+（1）12gg / 12G
+（2）:12
+（3）打开文件时输入vim +12 filename
+
+文本中想查看当前行信息，可输入： Ctrl + g
+
+
+SPC cl 注释
+
+
+
+EMACS
+
+vim  ~/.emacs
+;; 更换为清华源
+(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+(package-initialize) ;; You might already have this line
+########################################
+vim ~/.emacs
+;;==============================================================
+;; base configure for common using
+;;=============================================================
+;; start server , 这样在终端下主可以通过emacsclient -n 直接于GUI emacs打开文件
+(require 'server)
+(unless (server-running-p "server")
+(server-start))
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;设置更新源
+(package-initialize)
+(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+(package-initialize) ;; You might already have this line
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;M-x package-refresh-contents
+; M-x package-install RET evil
+;;输入用VI 模式evil
+(require 'evil)
+    (evil-mode 1)
+;;;;;;;;;;;;;;;;;
+vim ~/.emacs.d/init.el
+
+(require 'package)
+(setq package-archives
+  '(("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+     ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+     ("org" . "http://orgmode.org/elpa/")))
+(package-initialize)
+
+(defun require-package (python epc  deferred  auto-complete  jedi)
+  "Install given PACKAGE, optionally requiring MIN-VERSION.
+If NO-REFRESH is non-nil, the available package lists will not be
+re-downloaded in order to locate PACKAGE."
+  (if (package-installed-p package min-version)
+    t
+    (if (or (assoc package package-archive-contents) no-refresh)
+      (if (boundp 'package-selected-packages)
+        ;; Record this as a package the user installed explicitly
+        (package-install package nil)
+        (package-install package))
+      (progn
+        (package-refresh-contents)
+        (require-package package min-version t)))))
+(defun maybe-require-package (package &optional min-version no-refresh)
+  "Try to install PACKAGE, and return non-nil if successful.
+In the event of failure, return nil and print a warning message.
+Optionally require MIN-VERSION.  If NO-REFRESH is non-nil, the
+available package lists will not be re-downloaded in order to
+locate PACKAGE."
+  (condition-case err
+    (require-package package min-version no-refresh)
+    (error
+      (message "Couldn't install optional package `%s': %S" package err)
+      nil)))
+
+(when (maybe-require-package 'multiple-cursors)
+  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "C->") 'mc/mark-next-like-this))
+
+
