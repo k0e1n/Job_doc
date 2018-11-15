@@ -129,6 +129,51 @@ conda install  -n py37  pytorch torchvision cuda92 -c pytorch
 conda remove -n python3.7 --all
 source activate python3.6
 
+
+
+系统升级命令:
+
+sudo do-release-upgrade -d
+
+查看当前版本：lsb_release -a
+
+更新 命令：apt-get update && apt-get dist-upgrade
+
+重启 reboot
+
+更新	do-release-upgrade
+
+1 sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak #备份
+
+2 sudo vim /etc/apt/sources.list #修改
+deb http://mirrors.aliyun.com/ubuntu/ xenial main multiverse restricted universe
+
+deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse
+
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse
+
+sudo apt-get install ubuntu-desktop unity compizconfig-settings-manager
+
+sudo apt-get install ubuntu-desktop
+
+sudo apt-get install unity
+
+sudo apt-get install compizconfig-settings-manager
+
+查看当前桌面
+
+echo $DESKTOP_SESSION
+
+
+
 * MacOS setup
 
 
