@@ -197,8 +197,6 @@ pip3 install  -i https://pypi.tuna.tsinghua.edu.cn/simple   bs4    virtualenv fs
 
 pip3 install torch torchvision torchtext
 
-pip install -U pytest
-
 brew install opencv
 
 brew install wget 
