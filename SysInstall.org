@@ -1,7 +1,7 @@
 # Linux setup
 
 
-* 1. 开始安装
+* Linux开始安装
 ** 1.1 系统自己更新及固定ip 
 
 sudo vi /etc/network/interfaces
@@ -128,4 +128,7 @@ conda install  -n py37  pytorch torchvision cuda92 -c pytorch
 
 conda remove -n python3.7 --all
 source activate python3.6
+
+* MacOS setup
+
 
