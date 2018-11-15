@@ -117,16 +117,21 @@ a、
 0.0.0.0 account.jetbrains.com
  cp /etc/hosts /Users/k0e1n/Desktop
 sudo echo 0.0.0.0 account.jetbrains.com >> /Users/k0e1n/Desktop/hosts
+
 cp  -f  /Users/k0e1n/Desktop/hosts  /etc/
 
 
 conda update -n base conda
 conda create -n py37 anaconda python=3.7
+
 conda install   -n py37 scipy numpy requests pandas  matplotlib  pyyaml cython
+
 pip install  -i https://pypi.tuna.tsinghua.edu.cn/simple   bs4    virtualenv fs visdom openpyxl sympy ortools  sklearn gym  mysql-connector-python  pyBarcode==0.7 
+
 conda install  -n py37  pytorch torchvision cuda92 -c pytorch
 
 conda remove -n python3.7 --all
+
 source activate python3.6
 
 
