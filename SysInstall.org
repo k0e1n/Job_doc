@@ -367,45 +367,69 @@ x a	代码对齐的。会有提示下一
 3、设置源 dotspacemacs/init ()
 
 (setq configuration-layer--elpa-archives
+
     '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+
       ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+
       ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
 
      ;;解决org表格里面中英文对齐的问题
+
      (when (configuration-layer/layer-usedp 'chinese) 
+
      (when (spacemacs/system-is-mac) 
+
      (spacemacs//set-monospaced-font "Source Code Pro" "Hiragino Sans GB" 14 16)))
 
     (with-eval-after-load 'org
-     (org-babel-do-load-languages
-     'org-babel-load-languages
-      '(
-        (emacs-lisp . t)
-        (ruby . t)
-        (ditaa . t)
-        (python . t)
-        (latex . t)
-        (plantuml . t)
-        (R . t)
-       )))
 
-         (display-time-mode 1)
+     (org-babel-do-load-languages
+
+     'org-babel-load-languages
+
+      '( (emacs-lisp . t)
+
+        (ruby . t)
+
+        (ditaa . t)
+
+        (python . t)
+
+        (latex . t)
+
+        (plantuml . t)
+
+        (R . t) )))
+
+     (display-time-mode 1)
+
 自动换行
+
 (toggle-truncate-lines 1) 
 
 solarized-light
+
 2、设置 (defun dotspacemacs/user-config () 
+
  (setq python-shell-interpreter "/usr/local/Cellar/python/3.7.0/bin/python3")
 
-
 4、python自动补全:
-a、dotspacemacs-additional-package(epc  deferred  auto-complete  jedi htmlize):
+
+dotspacemacs-additional-package(epc  deferred  auto-complete  jedi htmlize):
+
 b. M-X:  jedi:install-serverx
+
 c. vim ~/.emacs.d/init.el 
+
 (autoload 'jedi:setup "jedi" nil t)
+
 (add-hook 'python-mode-hook 'jedi:setup)
+
 (setq jedi:setup-keys t)                      ; optional
+
 (setq jedi:complete-on-dot t)                 ; optional
+
 
 设置字体
 (set-default-font " -*-Helvetica-normal-normal-normal-*-14-*-*-*-p-0-iso10646-1")
