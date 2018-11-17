@@ -178,6 +178,8 @@ sudo apt-get install compizconfig-settings-manager
 echo $DESKTOP_SESSION
 
 
+sudo apt-get update
+sudo apt-get --reinstall install bcmwl-kernel-source
 
 * MacOS setup
 
@@ -487,21 +489,20 @@ Emacs中的查找和替换
 
 
 
-Vim中如何全选并复制？ 
-（区分大小写！！！） 
-全部删除：按esc键后，先按gg（到达顶部），然后dG 
-全部复制：按esc键后，先按gg，然后ggyG 
-全选高亮显示：按esc键后，先按gg，然后ggvG或者ggVG
-单行复制：按esc键后, 然后yy 
-单行删除：按esc键后, 然后dd 
-粘贴：按esc键后, 然后p
-vim只能粘贴50行的问题： 
-在当前用户主目录（~）编辑~/.vimrc（如果不存在，新建这个文件），添加一行
+** Vim中如何全选并复制？ 
++ 全部删除：按esc键后，先按gg（到达顶部），然后dG 
++ 全部复制：按esc键后，先按gg，然后ggyG 
++ 全选高亮显示：按esc键后，先按gg，然后ggvG或者ggVG
++ 单行复制：按esc键后, 然后yy 
++ 单行删除：按esc键后, 然后dd 
++ 粘贴：按esc键后, 然后p
++ vim只能粘贴50行的问题： 
++ 在当前用户主目录（~）编辑~/.vimrc（如果不存在，新建这个文件），添加一行
 
-命令行模式下输入（n为指定的行号）：
-（1）ngg / nG
-（2）:n
-（3）vim +n filename（注意这里要输入 + 号）
++ 命令行模式下输入（n为指定的行号）：
++ （1）ngg / nG
++ （2）:n
++ （3）vim +n filename（注意这里要输入 + 号）
 三者的区别在于，ngg/nG输入以后不需要按下回车键，而输入:n之后还要按下回车键才会跳转，vim +n filename只能在打开文件时跳转到相应的行。
 
 比如想跳转到文本的第12行，可以执行如下命令：
