@@ -100,7 +100,7 @@ scp LINUX_install.text k0e1n@192.168.1.3:/Volumes/MAC_DISK/Users/k0e1n
 scp cudnn-10.0-linux-x64-v7.4.1.5.tar k0e1n@192.168.1.100:/home/k0e1n/Downloads
 
 
-** 1.5 安装cudnn
+** 1.5 安装cudnn,pycharm
 1.5.1 cudnn
 tar -xf cudnn-10.0-linux-x64-v7.3.1.20.tgz
 
@@ -110,9 +110,17 @@ sudo cp -R cuda/lib64/* /usr/local/cuda-10.0/lib64
 
 
 
-http://www.jetbrains.com/pycharm/download/#section=windows
+sudo add-apt-repository ppa:mystic-mirage/pycharm
+sudo apt-get update
+sudo apt-get install pycharm
+
+echo "deb http://archive.getdeb.net/ubuntu $(lsb_release -cs)-getdeb apps" | sudo tee /etc/apt/sources.list.d/getdeb-apps.list
+wget -q -O- http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install pycharm
+
+
 注册：http://idea.lanyus.com
-a、
 /etc/hosts
 0.0.0.0 account.jetbrains.com
  cp /etc/hosts /Users/k0e1n/Desktop
